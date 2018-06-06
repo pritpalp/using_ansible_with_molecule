@@ -1,0 +1,34 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: instance
+    image: ubuntu:18.04  # using the default centos 7 image causes issues with docker and checking the service status
+    privileged: true
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint  # can cause errors with too many/few blank lines
+verifier:
+  name: testinfra
+  options:
+    verbose: true
+  lint:
+    name: flake8
+    embeded: false
+scenario:
+  name: default
+  test_sequence:   # can remove/reorder as required
+    - destroy
+    - syntax
+    - create
+    - prepare
+    - converge
+    - lint
+    - side_effect
+    - verify
+    - destroy

@@ -1,9 +1,0 @@
----
-# handlers file for new-role
-# check that the service has started
-- name: start nginx
-  service:
-    name: nginx
-    enabled: true
-    state: started
-  become: true

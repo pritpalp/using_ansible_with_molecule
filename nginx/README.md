@@ -34,7 +34,7 @@ passed in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
-         - { role: new-role, x: 42 }
+         - { role: nginx, x: 42 }
 
 License
 -------

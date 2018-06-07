@@ -1,2 +1,9 @@
 ---
-# tasks file for nginx
+# tasks file for new-role
+- name: install nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: true
+  notify: start nginx
+  become: true

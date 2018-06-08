@@ -7,3 +7,10 @@
     update_cache: true
   notify: start nginx
   become: true
+
+- name: copy index
+  become: true
+  copy:
+    src: ./files/index.html
+    dest: /usr/share/nginx/html/index.html
+    force: true
